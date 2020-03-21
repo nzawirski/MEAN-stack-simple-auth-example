@@ -12,7 +12,8 @@ import { SecretComponent } from './secret/secret.component';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
-import { TokenInterceptorService } from './token-interceptor.service'
+import { TokenInterceptorService } from './token-interceptor.service';
+import { SnackComponent } from './snack/snack.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TokenInterceptorService } from './token-interceptor.service'
     RegisterComponent,
     LoginComponent,
     LandingComponent,
-    SecretComponent
+    SecretComponent,
+    SnackComponent
   ],
   imports: [
     BrowserModule,

@@ -10,8 +10,10 @@ import { Router } from '@angular/router'
 })
 export class SecretComponent implements OnInit {
 
-  someData = []
-
+  someData = {
+    first_name: "",
+    last_name: ""
+  }
   constructor(private _dataService: SomeDataService,private _router: Router) { }
 
   ngOnInit() {
