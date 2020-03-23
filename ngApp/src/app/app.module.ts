@@ -15,6 +15,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { MatnavComponent } from './matnav/matnav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -23,6 +31,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     LoginComponent,
     LandingComponent,
     SecretComponent,
+    MatnavComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +40,13 @@ import { TokenInterceptorService } from './token-interceptor.service';
     FormsModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatButtonToggleModule,
   ],
   providers: [
     AuthService, 
