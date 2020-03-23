@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
             return res.status(500).json({ message: err.message })
         }
         if (user) {
-            return res.status(409).send("User already exists")
+            return res.status(409).json({message: "User already exists"})
         }
         bcrypt.hash(password, saltRounds, (err, hash) => {
             if (err) return res.status(500).json({ message: err.message })

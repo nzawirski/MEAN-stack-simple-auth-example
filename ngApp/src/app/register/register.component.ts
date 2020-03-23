@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router'
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RegisterData } from '../models/registerData'
 
 @Component({
@@ -9,13 +9,14 @@ import { RegisterData } from '../models/registerData'
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
   registerUserData = new RegisterData
   
-  constructor(private _auth: AuthService, private _router: Router) { }
+  constructor(private _auth: AuthService, private _router: Router, private _snackBar: MatSnackBar) { }
 
-  ngOnInit() {
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   registerUser() {
@@ -24,7 +25,11 @@ export class RegisterComponent implements OnInit {
       res => {
         this._router.navigate(['/login'])
       },
-      err => console.log(err)
+      err => {
+        console.log(err)
+        // err.error.message
+        this.openSnackBar(err.error.message, "OK")
+      }
     )      
   }
 

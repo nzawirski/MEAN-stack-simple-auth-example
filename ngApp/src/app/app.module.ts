@@ -9,11 +9,12 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
 import { SecretComponent } from './secret/secret.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
-import { SnackComponent } from './snack/snack.component'
 
 @NgModule({
   declarations: [
@@ -22,13 +23,14 @@ import { SnackComponent } from './snack/snack.component'
     LoginComponent,
     LandingComponent,
     SecretComponent,
-    SnackComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     AuthService, 
