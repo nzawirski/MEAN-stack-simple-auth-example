@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent {
 
   constructor() { }
+  toggledItem:string = "left"
+  clickMessage = 'Nothing';
 
-  ngOnInit() {
+  onClickButt(v: string) {
+    this.clickMessage = this.toggledItem;
+  }
+
+  onChange(event){
+    this.toggledItem = event.value
   }
 
 }

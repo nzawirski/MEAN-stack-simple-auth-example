@@ -1,6 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router'
+import { Observable } from 'rxjs';
+
+import { LoginData } from './models/loginData'
+import { RegisterData } from './models/registerData'
+import { User } from './models/user'
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +23,12 @@ export class AuthService {
 
   constructor(private http: HttpClient, private _router: Router) { }
 
-  registerUser(user) {
-    return this.http.post<any>(this._registerUrl, user)
+  registerUser(registerData:RegisterData):Observable<User> {
+    return this.http.post<User>(this._registerUrl, registerData, httpOptions)
   }
 
-  loginUser(user) {
-    return this.http.post<any>(this._loginUrl, user)
+  loginUser(loginData:LoginData):Observable<any> {
+    return this.http.post(this._loginUrl, loginData, httpOptions)
   }
 
   logoutUser() {
