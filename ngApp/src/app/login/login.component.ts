@@ -13,6 +13,7 @@ import { LoginData } from '../models/loginData'
 export class LoginComponent implements OnInit {
 
   loginUserData = new LoginData
+  waitingForResponse:boolean = false
 
   constructor(private _auth: AuthService, private _router: Router,  private _snackBar: MatSnackBar) { }
 
@@ -24,14 +25,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser () {
+    this.waitingForResponse = true
     this._auth.loginUser(this.loginUserData)
     .subscribe(
       res => {
+        this.waitingForResponse = false
         localStorage.setItem('token', res.token)
         this._router.navigate(['/secret'])
       },
       err => {
-        this.openSnackBar(err.error.message, "OK")
+        this.waitingForResponse = false
+        this.openSnackBar(err.status != 0 ? err.error.message : "Could not connect to server", "OK")
       }
     ) 
   }

@@ -12,6 +12,7 @@ import { RegisterData } from '../models/registerData'
 export class RegisterComponent {
 
   registerUserData = new RegisterData
+  waitingForResponse:boolean = false
   
   constructor(private _auth: AuthService, private _router: Router, private _snackBar: MatSnackBar) { }
 
@@ -20,15 +21,16 @@ export class RegisterComponent {
   }
 
   registerUser() {
+    this.waitingForResponse = true
     this._auth.registerUser(this.registerUserData)
     .subscribe(
       res => {
+        this.waitingForResponse = false
         this._router.navigate(['/login'])
       },
       err => {
-        console.log(err)
-        // err.error.message
-        this.openSnackBar(err.error.message, "OK")
+        this.waitingForResponse = false
+        this.openSnackBar(err.status != 0 ? err.error.message : "Could not connect to server", "OK")
       }
     )      
   }
