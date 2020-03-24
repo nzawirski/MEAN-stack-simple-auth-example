@@ -23,6 +23,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatIconModule,
     MatListModule,
     MatButtonToggleModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     AuthService, 

@@ -28,7 +28,7 @@
               <label>Password</label>
               <input type="password" [(ngModel)]="registerUserData.password" name="password" class="form-control rounded-0"  required>
             </div>
-            <button type="button" (click)="registerUser()" class="btn btn-primary float-right">{{waitingForResponse ? 'Please wait' : 'Register'}}</button>
+            <button type="button" (click)="registerUser()" class="btn btn-primary float-right"><mat-spinner diameter=22 color='accent' *ngIf=waitingForResponse></mat-spinner>{{waitingForResponse ? '' : 'Register'}}</button>
           </form>
         </div>
         <!--/card-block-->
